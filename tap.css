@@ -1,0 +1,330 @@
+    @font-face {
+    font-family: Caveat-Bold;
+    src: url(Fonts/Caveat-Bold.ttf);
+    }
+
+    @font-face {
+        font-family: Jua;
+        src: url(Fonts/Jua-Regular.ttf);
+    }
+
+    @font-face {
+        font-family: Capra;
+        src: url(Fonts/Caprasimo-Regular.ttf);
+    }
+
+    @font-face {
+        font-family: Pacifico;
+        src: url(Fonts/Pacifico-Regular.ttf);
+    }
+    body {
+      background: #f4c6c6;
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .logo {
+      position: fixed;
+      font-family: Caveat-Bold;
+      top: 3px;
+      left: 17px;
+      font-size: 24.5px;
+      padding: 6px 12px;
+      z-index: 999;
+      color: rgb(255, 240, 240);
+      text-decoration: underline;
+    }
+    #Achii{
+      color: rgb(255, 240, 240);
+    }
+
+    #what{
+      font-size: 9px;
+      color: #777777; 
+    }
+
+    #container {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+    }
+    #video-container {
+      position: relative;
+    }
+    video, canvas {
+      width: 320px;
+      height: 240px;
+      background: #eee;
+      border: 2px solid #ccc;
+      transform: scaleX(-1); /* Mirror video */
+    }
+    #countdown {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 72px;
+      color: white;
+      text-shadow: 2px 2px 8px black;
+      display: none;
+    }
+    .strip {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background: #e2a8a8;
+      padding: 10px;
+      border: 2px solid #b78989;
+    }
+
+    .strip-header {
+      font-weight: bold;
+      margin-top: 4px;
+    }
+    .strip img {
+      width: 100px;
+      height: 80px;
+      object-fit: cover;
+      background: #f2f2f2;
+    }
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    button {
+      padding: 8px 14px;
+      border-radius: 6px;
+      background: #e6b3b3;
+      border: 1px solid #c99;
+      cursor: pointer;
+      transition: 0.4s ease;
+    }
+
+    button:hover{
+    background: #ffffff;
+    color: rgb(255, 142, 161);
+    }
+
+        /* ✅ About Link */
+        .about-link {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            font-family: Caveat-Bold;
+            font-size: 18px;
+        }
+
+        .about-link a {
+            color: rgb(255, 240, 240);
+            text-decoration: none;
+            transition: .4s ease;
+        }
+
+        .about-link a:hover{
+            text-decoration: underline;
+        }
+
+        /* ✅ Modal styles */
+        #aboutModal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        #aboutModal .modal-content {
+            background: pink;
+            width: 400px;
+            max-width: 90%;
+            margin: 100px auto;
+            border-radius: 10px;
+            padding: 25px;
+            position: relative;
+            font-family: sans-serif;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+        }
+
+        #aboutModal .close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        #aboutModal .modal-content h2 {
+            font-family: Caveat-Bold;
+            font-size: 22px;
+            margin-top: -5px;
+        }
+
+        #aboutModal .modal-content p {
+            font-size: 15px;
+            margin-top: -5px;
+            line-height: 1.6;
+        }
+
+        /* New Social Icons CSS */
+        #aboutModal .social-icons {
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            font-size: 26px;
+        }
+
+        #aboutModal .social-icons a {
+            color: black;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        #aboutModal .social-icons a:hover {
+            color: #ff6f91; /* pinkish hover color */
+        }
+
+        .footer {
+            text-align: center;
+            padding: 15px;
+            font-family: Jua;
+            font-size: 14px;
+            color: #555;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .footer a {
+            text-decoration: none;
+            color: #ff6f91;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        #aboutModal .modal-content {
+            transform: scale(0.5);
+            opacity: 0;
+            transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+        }
+
+        #aboutModal.show .modal-content {
+            transform: scale(1.0);
+            opacity: 1;
+        }
+
+/* ✅ Responsive Layout */
+@media (max-width: 768px) {
+    .logo {
+        margin-top: 7px;
+        margin-left: -5px;
+        float: left;
+        font-size: 15px;
+        padding: 0;
+    }
+
+    #what{
+      margin-top: 5px;
+    }
+
+
+    .about-link {
+        top: 10px;
+        right: 10px;
+        font-size: 16px;
+    }
+
+    .footer {
+        font-size: 12px;
+        padding: 10px;
+    }
+
+    .buttons{
+      margin-left: -20px;
+      margin-top: -5px;
+      padding: 10px;
+    }
+
+    .strip{
+      margin-left: -350px;
+      margin-top: 230px;
+      height: 350px;
+    }
+
+    #video-container {
+      position: relative;
+    }
+    video, canvas {
+      width: 270px;
+      height: 200px;
+      background: #eee;
+      border: 2px solid #ccc;
+      transform: scaleX(-1); /* Mirror video */
+      margin-left: -132px;
+      margin-top: -200px;
+    }
+
+    #countdown {
+      position: absolute;
+      top: -80px;
+      left: 0%;
+      transform: translate(-50%, -50%);
+      font-size: 72px;
+      color: white;
+      text-shadow: 2px 2px 8px black;
+      display: none;
+    }
+
+    .about-link {
+        top: 10px;
+        right: 10px;
+        font-size: 16px;
+    }
+
+    .footer {
+        font-size: 12px;
+        padding: 10px;
+    }
+
+        #aboutModal .modal-content {
+            background: pink;
+            width: 175px;
+            max-width: 90%;
+            margin: 50px auto;
+            border-radius: 10px;
+            padding: 25px;
+            position: relative;
+            font-family: sans-serif;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+        }
+
+        #aboutModal .close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        #aboutModal .modal-content h2 {
+            font-family: Caveat-Bold;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        #aboutModal .modal-content p {
+            font-size: 11px;
+            margin-top: 10px;
+            line-height: 1.6;
+        }
+}

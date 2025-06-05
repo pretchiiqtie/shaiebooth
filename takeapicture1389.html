@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shaiebooth - Booth for y'all</title>
+  <link rel="stylesheet" href="tap.css">
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+</head>
+<body>
+  <div class="logo"><a href="index.html" id="Achii">Shaiebooth</a></div>
+        <!-- ✅ About Link -->
+        <div class="about-link">
+            <a href="#" onclick="openModal()">About</a>
+        </div>
+  <div id="container">
+    <div>
+      <div id="video-container">
+        <video id="video" autoplay></video>
+        <div id="countdown">3</div>
+      </div>
+
+      <div class="buttons">
+        <button onclick="startPhotobooth()">Start or restart (4 Pics)</button>
+        <button onclick="editPhotos()">Edit</button>
+        <button onclick="downloadStrip()">Download</button>
+        <button onclick="GoBack()">Back</button>
+      </div>
+    </div>
+
+    <div class="strip" id="photoStrip">
+      <img />
+      <img />
+      <img />
+      <img />
+      <div class="strip-footer" id="stripFooter"></div>
+      <div class="strip-header"></div>
+    </div>
+  </div>
+
+  <canvas id="canvas" style="display:none;"></canvas>
+  <canvas id="stripCanvas" style="display:none;"></canvas>
+
+ <!-- ✅ Modal HTML -->
+        <div id="aboutModal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <h2>Welcome to Shaiebooth! 🎉📸</h2>
+                <p id="what">What is Shaiebooth?</p>
+                <p>
+                    Step into a 🌎 of vintage charm, fun😉and playful memories‼️🛍️Shaiebooth—A cutesy😘, pinky🩷photobooth experience that’s all smiles, sparkles, and unforgettable snaps‼️📸✨
+                </p>
+                <p>
+                    Say cheese with Shaiebooth‼️🎉 A cutesy photobooth site made for fun moments you can actually share.
+                </p>
+                <p>
+                    📸 SNAP. 😝 SMILE/POSE. Let’s make memories that last forever— one shot one smile😉💗🎬 ✨ Grab your friends and snap away‼️😉💗
+                </p>
+                <p>
+                    --- Achi
+                </p>
+
+                <!-- ✅ Social Icons Aligned Left -->
+                <div style="margin-top: 30px; display: flex; justify-content: flex-end; align-items: center;">
+                    <div class="social-icons" style="display: flex; gap: 12px;">
+                        <!-- Instagram SVG -->
+                        <a href="https://Instagram.com/pretchii__" target="_blank" aria-label="Instagram">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="black" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7 2C4.2 2 2 4.2 2 7V17C2 19.8 4.2 22 7 22H17C19.8 22 22 19.8 22 17V7C22 4.2 19.8 2 17 2H7ZM20 17C20 18.7 18.7 20 17 20H7C5.3 20 4 18.7 4 17V7C4 5.3 5.3 4 7 4H17C18.7 4 20 5.3 20 7V17ZM17 7.5C17.8 7.5 18.5 6.8 18.5 6C18.5 5.2 17.8 4.5 17 4.5C16.2 4.5 15.5 5.2 15.5 6C15.5 6.8 16.2 7.5 17 7.5ZM12 7C9.2 7 7 9.2 7 12C7 14.8 9.2 17 12 17C14.8 17 17 14.8 17 12C17 9.2 14.8 7 12 7ZM12 15C10.3 15 9 13.7 9 12C9 10.3 10.3 9 12 9C13.7 9 15 10.3 15 12C15 13.7 13.7 15 12 15Z"/>
+                            </svg>
+                        </a>
+
+                        <!-- TikTok SVG -->
+                        <a href="https://www.tiktok.com/@pretchii__" target="_blank" aria-label="TikTok">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="black" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2H14.5C14.7 4.2 16.3 5.8 18.5 6V8.5C16.8 8.5 15.3 7.9 14 6.9V15.5C14 18 12 20 9.5 20C7 20 5 18 5 15.5C5 13.2 6.7 11.3 9 11V13.5C8.2 13.7 7.5 14.5 7.5 15.5C7.5 16.6 8.4 17.5 9.5 17.5C10.6 17.5 11.5 16.6 11.5 15.5V2H12Z"/>
+                            </svg>
+                        </a>
+
+                        <!-- Facebook SVG -->
+                        <a href="https://www.facebook.com/axl.parlan" target="_blank" aria-label="Facebook">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="black" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M22 12C22 6.5 17.5 2 12 2S2 6.5 2 12C2 17 5.7 21.1 10.5 21.9V14.8H7.9V12H10.5V9.8C10.5 7.3 11.9 6 14.2 6C15.3 6 16.4 6.2 16.4 6.2V8.7H15C13.7 8.7 13.5 9.4 13.5 10.2V12H16.3L15.9 14.8H13.5V21.9C18.3 21.1 22 17 22 12Z"/>
+                            </svg>
+                        </a>
+
+                        <!-- GitHub SVG -->
+                        <a href="https://github.com/pretchiiqtie" target="_blank" aria-label="GitHub">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="black" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2C6.5 2 2 6.5 2 12C2 16.4 4.9 20.1 8.9 21.5C9.4 21.6 9.6 21.3 9.6 21V19.1C6.7 19.7 6.2 17.8 6.2 17.8C5.8 16.7 5.2 16.4 5.2 16.4C4.3 15.8 5.3 15.8 5.3 15.8C6.3 15.9 6.9 16.9 6.9 16.9C7.8 18.3 9.3 17.9 10 17.6C10.1 16.9 10.4 16.4 10.7 16.1C8.3 15.8 5.8 14.8 5.8 10.7C5.8 9.5 6.3 8.5 7.1 7.7C7 7.4 6.6 6.2 7.2 4.7C7.2 4.7 8.2 4.4 9.6 5.5C10.5 5.2 11.5 5 12.5 5C13.5 5 14.5 5.2 15.4 5.5C16.8 4.4 17.8 4.7 17.8 4.7C18.4 6.2 18 7.4 17.9 7.7C18.7 8.5 19.2 9.5 19.2 10.7C19.2 14.8 16.7 15.8 14.3 16.1C14.7 16.5 15 17.2 15 18.3V21C15 21.3 15.2 21.6 15.7 21.5C19.7 20.1 22.6 16.4 22.6 12C22.6 6.5 18.1 2 12.6 2H12Z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+  <script>
+    const video = document.getElementById('video');
+    const canvas = document.getElementById('canvas');
+    const stripCanvas = document.getElementById('stripCanvas');
+    const strip = document.getElementById('photoStrip');
+    const imgs = strip.querySelectorAll('img');
+    const countdownEl = document.getElementById('countdown');
+
+    navigator.mediaDevices.getUserMedia({ video: true }).then(stream => {
+      video.srcObject = stream;
+    }).catch(err => {
+      alert("Camera access denied: " + err.message);
+    });
+
+    function delay(ms) {
+      return new Promise(res => setTimeout(res, ms));
+    }
+
+    function countdown(seconds) {
+      return new Promise(resolve => {
+        let count = seconds;
+        countdownEl.textContent = count;
+        countdownEl.style.display = 'block';
+
+        const interval = setInterval(() => {
+          count--;
+          if (count >= 0) {
+            countdownEl.textContent = count;
+          }
+          if (count < 0) {
+            clearInterval(interval);
+            resolve();
+          }
+        }, 1000);
+      });
+    }
+
+    async function startPhotobooth() {
+      imgs.forEach(img => img.src = "");
+
+      for (let i = 0; i < 4; i++) {
+        await countdown(3);
+        await delay(300);
+        capturePhoto(i);
+        await delay(500);
+      }
+
+      countdownEl.style.display = 'none';
+    }
+
+    function capturePhoto(index) {
+      const ctx = canvas.getContext('2d');
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+
+      ctx.save();
+      ctx.translate(canvas.width, 0);
+      ctx.scale(-1, 1);
+      ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+      ctx.restore();
+
+      imgs[index].src = canvas.toDataURL('image/png');
+    }
+
+    function editPhotos() {
+      const photoData = Array.from(imgs).map(img => img.src);
+      localStorage.setItem('capturedPhotos', JSON.stringify(photoData));
+      window.location.href = 'edit1389.html';
+    }
+
+    function downloadStrip() {
+      const scaleFactor = 9;
+      const originalStripWidth = 120;
+      const originalImageWidth = 100;
+      const originalImageHeight = 80;
+      const originalSpacing = 10;
+      const originalExtraTop = 20;
+      const originalExtraBottom = 20;
+      const originalFooterHeight = 20;
+      const originalCreditHeight = 16;
+      const totalImages = 4;
+
+      const stripWidth = originalStripWidth * scaleFactor;
+      const imageWidth = originalImageWidth * scaleFactor;
+      const imageHeight = originalImageHeight * scaleFactor;
+      const spacing = originalSpacing * scaleFactor;
+      const extraTop = originalExtraTop * scaleFactor;
+      const extraBottom = originalExtraBottom * scaleFactor;
+      const footerHeight = originalFooterHeight * scaleFactor;
+      const creditHeight = originalCreditHeight * scaleFactor;
+
+      const contentHeight = (imageHeight * totalImages) + (spacing * (totalImages - 1));
+      const totalHeight = extraTop + contentHeight + footerHeight + creditHeight + extraBottom;
+      const centerGap = 30;
+      const totalCanvasWidth = stripWidth * 2 + centerGap;
+
+      stripCanvas.width = totalCanvasWidth;
+      stripCanvas.height = totalHeight;
+
+      const ctx = stripCanvas.getContext('2d');
+      ctx.fillStyle = '#f4c6c6'; // Default background color
+      ctx.fillRect(0, 0, totalCanvasWidth, totalHeight);
+
+      const sources = Array.from(strip.querySelectorAll('img')).map(img => img.src);
+      const images = [];
+      let loaded = 0;
+
+      for (let i = 0; i < totalImages; i++) {
+        const img = new Image();
+        img.crossOrigin = "anonymous";
+        img.onload = () => {
+          images[i] = img;
+          loaded++;
+          if (loaded === totalImages) {
+            drawAll();
+          }
+        };
+        img.onerror = () => {
+          console.error(`Image load error for slot ${i}: ${sources[i]}`);
+        };
+        img.src = sources[i];
+      }
+
+      function drawStrip(startX) {
+        for (let i = 0; i < totalImages; i++) {
+          const y = i * (imageHeight + spacing) + extraTop;
+
+          ctx.shadowColor = 'transparent';
+          ctx.shadowBlur = 0;
+          ctx.shadowOffsetX = 0;
+          ctx.shadowOffsetY = 0;
+
+          ctx.filter = 'none';
+          ctx.drawImage(images[i], startX + (stripWidth - imageWidth) / 2, y, imageWidth, imageHeight);
+        }
+
+        ctx.shadowColor = 'rgba(0, 0, 0, 0.75)';
+        ctx.shadowBlur = 4;
+        ctx.shadowOffsetX = 2;
+        ctx.shadowOffsetY = 2;
+
+        ctx.fillStyle = "#fff4f4";
+        ctx.font = `${10 * scaleFactor}px sans-serif`;
+        ctx.textAlign = "center";
+
+        const now = new Date();
+        const dateString = now.toLocaleString();
+        ctx.fillText(dateString, startX + stripWidth / 2, extraTop + contentHeight + 12 * scaleFactor);
+
+        ctx.font = `bold ${10 * scaleFactor}px sans-serif`;
+        ctx.fillText("Shaiebooth", startX + stripWidth / 2, totalHeight - 8 * scaleFactor);
+      }
+
+      function drawAll() {
+        drawStrip(0);
+        drawStrip(stripWidth + centerGap);
+
+        const now = new Date();
+        const filename = now.toLocaleString().replace(/[\/:]/g, "-").replace(/,\s*/g, "_") + '.png';
+
+        const link = document.createElement('a');
+        link.download = filename;
+        link.href = stripCanvas.toDataURL();
+        link.click();
+      }
+    }
+
+    function GoBack() {
+      window.location.href = 'index.html';
+    }
+
+function openModal() {
+            const modal = document.getElementById('aboutModal');
+            modal.style.display = 'block';
+
+            // Allow DOM to render before adding the show class
+            requestAnimationFrame(() => {
+                modal.classList.add('show');
+            });
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('aboutModal');
+            modal.classList.remove('show');
+
+            // Wait for transition to finish before hiding
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 300); // match the CSS transition duration
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('aboutModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        };
+  </script>
+    <footer class="footer">
+        Made with 💖 by <a href="https://Instagram.com/pretchii__" target="_blank">@pretchii__</a>
+    </footer>
+</body>
+</html>
