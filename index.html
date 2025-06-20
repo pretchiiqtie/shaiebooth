@@ -45,11 +45,11 @@
 
         .main {
             width: 100%;
+            min-height: 100vh;
             background: #f4c6c6;
-            background-position: center center;
+            background-position: center;
             background-size: cover;
             background-repeat: repeat-y;
-            min-height: 100vh;
         }
 
 
@@ -302,14 +302,6 @@
             opacity: 1;
         }
 
-/* ✅ Fix background issues */
-.main {
-    min-height: 100vh;
-    background-size: cover;
-    background-repeat: repeat-y;
-    background-position: center center;
-}
-
 /* ✅ Responsive Layout */
 @media (max-width: 768px) {
     .navbar {
@@ -326,11 +318,9 @@
     }
 
     .logo {
-        margin-top: 0px;
+        font-size: 20px;
         margin-left: 10px;
-        float: left;
-        font-size: 15px;
-        padding: 0;
+        padding-top: 5px;
     }
 
     .content {
