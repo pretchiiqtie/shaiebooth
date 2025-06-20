@@ -1,21 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="icon" href="#">
+    <meta charset="UTF-8">
+    <link rel="icon" href="favicon.png" />
     <meta name="google-site-verification" content="eJHD0bjGjP8ToPlcYnKeBWZVdL2fOg0W7lXlXTtqRJ4" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shaiebooth - Booth for y'all</title>
-    <script>
-        alert("If your using a mobile device just view it in desktop mode and rotate it to the side to maximize its potential.")
-    </script>
 
-    <!-- ✅ Font Awesome for social media icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-pap5Hkk8f9yDdrRoqnQnzk3FGbAQkzR5ckD5XSkU+OOkz5mI2asGrfcWvAMBS0G3Jw9y5ZdhFfCDbF/7jTKv1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" />
 
     <style>
-        *{
+        :root {
+            --vh: 1vh;
+        }
+
+        html, body {
+            height: 100%;
             margin: 0;
             padding: 0;
+            background: #f4c6c6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         @font-face {
@@ -43,73 +53,67 @@
             src: url(Fonts/SendFlowers-Regular.ttf);
         }
 
+        #mobile-alert {
+            display: none;
+            background: #ffc2d1;
+            color: #700;
+            font-family: Jua;
+            text-align: center;
+            padding: 10px;
+            font-size: 14px;
+        }
+
         .main {
-            width: 100%;
+            min-height: calc(var(--vh, 1vh) * 100);
             background: #f4c6c6;
             background-position: center center;
             background-size: cover;
             background-repeat: repeat-y;
-            min-height: 100vh;
         }
 
-
-        .navbar{
+        .navbar {
             width: 1200px;
+            max-width: 100%;
             height: 75px;
             margin: auto;
         }
 
-        #Achii{
+        #Achii {
             color: rgb(255, 240, 240);
         }
 
-        .icon{
+        .icon {
             width: 200px;
             float: left;
             height: 70px;
         }
 
-        .logo{
+        .logo {
             color: pink;
             font-size: 25px;
             font-family: Caveat-Bold;
-            padding-left: -20px;
             margin-left: -50px;
             float: left;
             padding-top: 10px;
-            margin-top: 0px;
             text-decoration: none;
         }
 
-        .content{
+        .content {
             width: 1200px;
-            height: auto;
+            max-width: 100%;
             margin: auto;
             color: #ffa8a8;
             position: relative;
-            text-shadow: 2px 2px 2px rgba(0,0,0,0.35);
+            text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.35);
         }
 
-        .mabout{
+        .mabout {
             float: right;
             margin-right: 350px;
             margin-top: -90px;
         }
 
-        #img1{
-            width: 100px;
-            height: 175x;
-            transform: rotate(13deg);
-            transition: .4s ease;
-            cursor: pointer;
-        }
-
-        #img1:hover{
-            transform: scale(1.35);
-            box-shadow: 0px 0px 25px black;
-        }
-
-        #img2{
+        #img1, #img2 {
             width: 100px;
             height: 175px;
             transform: rotate(13deg);
@@ -117,20 +121,12 @@
             cursor: pointer;
         }
 
-        #img2:hover{
+        #img1:hover, #img2:hover {
             transform: scale(1.35);
-            box-shadow: 0px 0px 25px black;
+            box-shadow: 0 0 25px black;
         }
 
-        .content .par{
-            padding-left: 20px;
-            padding-bottom: 25px;
-            font-family: Arial;
-            letter-spacing: 1.2px;
-            line-height: 30px;
-        }
-
-        .content h1{
+        .content h1 {
             font-family: SF;
             color: #ffffff;
             font-size: 35px;
@@ -139,58 +135,27 @@
             letter-spacing: 3px;
         }
 
-        .content .cnT,
-        .content .cnU{
+        .content .cnT, .content .cnU {
             font-family: Jua;
-            color: rgb(255, 225, 225);
-            width: 160px;
-            height: 40px;
-            background: #e6b3b3;
-            border: 1px solid #c99;
-            font-size: 18px;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: .4s ease;
-        }
-
-        .content .cnT{
-            margin-left: 300px;
-            margin-top: 75px;
-        }
-
-        .content .cnU{
-            margin-top: 25px;
-            margin-left: 375px;
-        }
-
-        .cnT,
-        .cnU{
             width: 240px;
             height: 40px;
             background: white;
             border: none;
-            margin-top: 30px;
             font-size: 18px;
             border-radius: 10px;
             cursor: pointer;
             color: #fff;
             transition: 0.4s ease;
+            margin: 30px auto 0;
+            display: block;
         }
 
-        .cnT:hover,
-        .cnU:hover{
+        .cnT:hover, .cnU:hover {
             background: #ffffff;
             color: rgb(255, 142, 161);
             transform: scale(1.15);
         }
 
-        .btnn a{
-            text-decoration: none;
-            color: white;
-            font-weight: bold;
-        }
-
-        /* ✅ About Link */
         .about-link {
             position: absolute;
             top: 20px;
@@ -205,11 +170,10 @@
             transition: .4s ease;
         }
 
-        .about-link a:hover{
+        .about-link a:hover {
             text-decoration: underline;
         }
 
-        /* ✅ Modal styles */
         #aboutModal {
             display: none;
             position: fixed;
@@ -229,6 +193,14 @@
             position: relative;
             font-family: sans-serif;
             box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+            transform: scale(0.5);
+            opacity: 0;
+            transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+        }
+
+        #aboutModal.show .modal-content {
+            transform: scale(1);
+            opacity: 1;
         }
 
         #aboutModal .close {
@@ -251,23 +223,22 @@
             line-height: 1.6;
         }
 
-        /* New Social Icons CSS */
-        #aboutModal .social-icons {
+        .social-icons {
             margin-top: 30px;
             display: flex;
-            justify-content: space-evenly;
-            align-items: center;
+            justify-content: flex-end;
+            gap: 12px;
             font-size: 26px;
         }
 
-        #aboutModal .social-icons a {
+        .social-icons a {
             color: black;
             text-decoration: none;
             transition: color 0.3s ease;
         }
 
-        #aboutModal .social-icons a:hover {
-            color: #ff6f91; /* pinkish hover color */
+        .social-icons a:hover {
+            color: #ff6f91;
         }
 
         .footer {
@@ -291,133 +262,82 @@
             text-decoration: underline;
         }
 
-        #aboutModal .modal-content {
-            transform: scale(0.5);
-            opacity: 0;
-            transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 16px;
+                margin-left: 10px;
+            }
+
+            .navbar {
+                text-align: center;
+                height: auto;
+            }
+
+            .icon {
+                width: 100%;
+                float: none;
+                height: auto;
+            }
+
+            .content {
+                width: 90%;
+                text-align: center;
+            }
+
+            .mabout {
+                float: none;
+                margin: 20px auto;
+                text-align: center;
+            }
+
+            #img1, #img2 {
+                margin: 10px;
+                transform: rotate(0deg);
+            }
+
+            .about-link {
+                top: 10px;
+                right: 10px;
+                font-size: 16px;
+            }
+
+            .footer {
+                font-size: 12px;
+                padding: 10px;
+            }
+
+            #aboutModal .modal-content {
+                width: 175px;
+                padding: 20px;
+            }
+
+            #aboutModal .modal-content h2 {
+                font-size: 18px;
+            }
+
+            #aboutModal .modal-content p {
+                font-size: 11px;
+            }
         }
-
-        #aboutModal.show .modal-content {
-            transform: scale(1.0);
-            opacity: 1;
-        }
-
-/* ✅ Fix background issues */
-.main {
-    min-height: 100vh;
-    background-size: cover;
-    background-repeat: repeat-y;
-    background-position: center center;
-}
-
-/* ✅ Responsive Layout */
-@media (max-width: 768px) {
-    .navbar {
-        width: 100%;
-        height: auto;
-        text-align: center;
-        padding-top: 10px;
-    }
-
-    .icon {
-        float: none;
-        height: auto;
-        width: 100%;
-    }
-
-    .logo {
-        margin-top: 0px;
-        margin-left: 10px;
-        float: left;
-        font-size: 15px;
-        padding: 0;
-    }
-
-    .content {
-        width: 90%;
-        text-align: center;
-    }
-
-    .content .cnT,
-    .content .cnU {
-        margin: 5px auto;
-        display: block;
-    }
-
-    .mabout {
-        float: none;
-        margin: 20px auto 0;
-        text-align: center;
-    }
-
-    #img1, #img2 {
-        margin: 10px;
-        transform: rotate(0deg);
-        margin-top: 30px;
-    }
-
-    .about-link {
-        top: 10px;
-        right: 10px;
-        font-size: 16px;
-    }
-
-    .footer {
-        font-size: 12px;
-        padding: 10px;
-    }
-
-        #aboutModal .modal-content {
-            background: pink;
-            width: 175px;
-            max-width: 90%;
-            margin: 50px auto;
-            border-radius: 10px;
-            padding: 25px;
-            position: relative;
-            font-family: sans-serif;
-            box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
-        }
-
-        #aboutModal .close {
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            cursor: pointer;
-            font-size: 20px;
-        }
-
-        #aboutModal .modal-content h2 {
-            font-family: Caveat-Bold;
-            font-size: 18px;
-            margin-bottom: 5px;
-        }
-
-        #aboutModal .modal-content p {
-            font-size: 11px;
-            margin-top: 10px;
-            line-height: 1.6;
-        }
-}
-
     </style>
 </head>
 <body>
+    <div id="mobile-alert">📱 For best experience, rotate your device and enable desktop mode!</div>
 
     <div class="main">
         <div class="navbar">
             <div class="icon">
-                <h2 class="logo"><a href="index.html" id="Achii">Shaiebooth</a></h2>
+                <a href="index.html" class="logo" id="Achii"><h2>Shaiebooth</h2></a>
             </div>
         </div>
-        <!-- ✅ About Link -->
+
         <div class="about-link">
             <a href="#" onclick="openModal()">About</a>
         </div>
+
         <div class="content">
             <h1>Shaiebooth</h1>
             <a href="takeapicture1389.html"><button class="cnT">Take a picture</button></a>
-            <br>
             <a href="uploadanimage1389.html"><button class="cnU">Upload an image</button></a>
             <div class="mabout">
                 <img src="6-2-2025_3-07-29 AM.png" id="img1">
@@ -425,81 +345,55 @@
             </div>
         </div>
     </div>
-        <!-- ✅ Modal HTML -->
-        <div id="aboutModal">
-            <div class="modal-content">
-                <span class="close" onclick="closeModal()">&times;</span>
-                <h2>Welcome to Shaiebooth! 🎉📸</h2>
-                <p style="font-size: 12px; color: #777777; margin-top: 15px;">What is Shaiebooth?</p>
-                <p>
-                    Step into a 🌎 of vintage charm, fun😉and playful memories‼️🛍️Shaiebooth—A cutesy😘, pinky🩷photobooth experience that’s all smiles, sparkles, and unforgettable snaps‼️📸✨
-                </p>
-                <p>
-                    Say cheese with Shaiebooth‼️🎉 A cutesy photobooth site made for fun moments you can actually share.
-                </p>
-                <p>
-                    📸 SNAP. 😝 SMILE/POSE. Let’s make memories that last forever— one shot one smile😉💗🎬 ✨ Grab your friends and snap away‼️😉💗
-                </p>
-                <p>
-                    --- Achi
-                </p>
 
-                <!-- ✅ Social Icons Aligned Left -->
-                <div style="margin-top: 30px; display: flex; justify-content: flex-end; align-items: center;">
-                    <div class="social-icons" style="display: flex; gap: 12px;">
-                        <!-- Instagram SVG -->
-                        <a href="https://Instagram.com/pretchii__" target="_blank" aria-label="Instagram">
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="black" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M7 2C4.2 2 2 4.2 2 7V17C2 19.8 4.2 22 7 22H17C19.8 22 22 19.8 22 17V7C22 4.2 19.8 2 17 2H7ZM20 17C20 18.7 18.7 20 17 20H7C5.3 20 4 18.7 4 17V7C4 5.3 5.3 4 7 4H17C18.7 4 20 5.3 20 7V17ZM17 7.5C17.8 7.5 18.5 6.8 18.5 6C18.5 5.2 17.8 4.5 17 4.5C16.2 4.5 15.5 5.2 15.5 6C15.5 6.8 16.2 7.5 17 7.5ZM12 7C9.2 7 7 9.2 7 12C7 14.8 9.2 17 12 17C14.8 17 17 14.8 17 12C17 9.2 14.8 7 12 7ZM12 15C10.3 15 9 13.7 9 12C9 10.3 10.3 9 12 9C13.7 9 15 10.3 15 12C15 13.7 13.7 15 12 15Z"/>
-                            </svg>
-                        </a>
-
-                        <!-- TikTok SVG -->
-                        <a href="https://www.tiktok.com/@pretchii__" target="_blank" aria-label="TikTok">
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="black" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 2H14.5C14.7 4.2 16.3 5.8 18.5 6V8.5C16.8 8.5 15.3 7.9 14 6.9V15.5C14 18 12 20 9.5 20C7 20 5 18 5 15.5C5 13.2 6.7 11.3 9 11V13.5C8.2 13.7 7.5 14.5 7.5 15.5C7.5 16.6 8.4 17.5 9.5 17.5C10.6 17.5 11.5 16.6 11.5 15.5V2H12Z"/>
-                            </svg>
-                        </a>
-
-                        <!-- Facebook SVG -->
-                        <a href="https://www.facebook.com/axl.parlan" target="_blank" aria-label="Facebook">
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="black" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M22 12C22 6.5 17.5 2 12 2S2 6.5 2 12C2 17 5.7 21.1 10.5 21.9V14.8H7.9V12H10.5V9.8C10.5 7.3 11.9 6 14.2 6C15.3 6 16.4 6.2 16.4 6.2V8.7H15C13.7 8.7 13.5 9.4 13.5 10.2V12H16.3L15.9 14.8H13.5V21.9C18.3 21.1 22 17 22 12Z"/>
-                            </svg>
-                        </a>
-
-                        <!-- GitHub SVG -->
-                        <a href="https://github.com/pretchiiqtie" target="_blank" aria-label="GitHub">
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="black" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 2C6.5 2 2 6.5 2 12C2 16.4 4.9 20.1 8.9 21.5C9.4 21.6 9.6 21.3 9.6 21V19.1C6.7 19.7 6.2 17.8 6.2 17.8C5.8 16.7 5.2 16.4 5.2 16.4C4.3 15.8 5.3 15.8 5.3 15.8C6.3 15.9 6.9 16.9 6.9 16.9C7.8 18.3 9.3 17.9 10 17.6C10.1 16.9 10.4 16.4 10.7 16.1C8.3 15.8 5.8 14.8 5.8 10.7C5.8 9.5 6.3 8.5 7.1 7.7C7 7.4 6.6 6.2 7.2 4.7C7.2 4.7 8.2 4.4 9.6 5.5C10.5 5.2 11.5 5 12.5 5C13.5 5 14.5 5.2 15.4 5.5C16.8 4.4 17.8 4.7 17.8 4.7C18.4 6.2 18 7.4 17.9 7.7C18.7 8.5 19.2 9.5 19.2 10.7C19.2 14.8 16.7 15.8 14.3 16.1C14.7 16.5 15 17.2 15 18.3V21C15 21.3 15.2 21.6 15.7 21.5C19.7 20.1 22.6 16.4 22.6 12C22.6 6.5 18.1 2 12.6 2H12Z"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
+    <div id="aboutModal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Welcome to Shaiebooth! 🎉📸</h2>
+            <p style="font-size: 12px; color: #777777; margin-top: 15px;">What is Shaiebooth?</p>
+            <p>
+                Step into a 🌎 of vintage charm, fun😉and playful memories‼️🛍️ Shaiebooth—A cutesy😘, pinky🩷 photobooth experience that’s all smiles, sparkles, and unforgettable snaps‼️📸✨
+            </p>
+            <p>
+                Say cheese with Shaiebooth‼️🎉 A cutesy photobooth site made for fun moments you can actually share.
+            </p>
+            <p>
+                📸 SNAP. 😝 SMILE/POSE. Let’s make memories that last forever—one shot one smile😉💗🎬✨
+            </p>
+            <p>--- Achi</p>
+            <div class="social-icons">
+                <a href="https://Instagram.com/pretchii__" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@pretchii__" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.facebook.com/axl.parlan" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="https://github.com/pretchiiqtie" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
             </div>
         </div>
+    </div>
 
+    <footer class="footer">
+        Made with 💖 by <a href="https://Instagram.com/pretchii__" target="_blank">@pretchii__</a>
+    </footer>
 
-    <!-- ✅ Modal Script -->
     <script>
+        // Fix viewport height on mobile
+        function setVH() {
+            let vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', `${vh}px`);
+        }
+        setVH();
+        window.addEventListener('resize', setVH);
+
+        // Modal logic
         function openModal() {
             const modal = document.getElementById('aboutModal');
             modal.style.display = 'block';
-
-            // Allow DOM to render before adding the show class
-            requestAnimationFrame(() => {
-                modal.classList.add('show');
-            });
+            requestAnimationFrame(() => modal.classList.add('show'));
         }
 
         function closeModal() {
             const modal = document.getElementById('aboutModal');
             modal.classList.remove('show');
-
-            // Wait for transition to finish before hiding
-            setTimeout(() => {
-                modal.style.display = 'none';
-            }, 300); // match the CSS transition duration
+            setTimeout(() => { modal.style.display = 'none'; }, 300);
         }
 
         window.onclick = function(event) {
@@ -509,8 +403,6 @@
             }
         };
     </script>
-    <footer class="footer">
-        Made with 💖 by <a href="https://Instagram.com/pretchii__" target="_blank">@pretchii__</a>
-    </footer>
 </body>
 </html>
+
