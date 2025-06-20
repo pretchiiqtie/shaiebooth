@@ -7,6 +7,14 @@
     <title>Shaiebooth - Booth for y'all</title>
     <script>
         alert("If your using a mobile device just view it in desktop mode and rotate it to the side to maximize its potential.")
+    
+        // Fix 100vh on mobile devices
+        function setFullHeight() {
+            let vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', `${vh}px`);
+        }
+        window.addEventListener('resize', setFullHeight);
+        window.addEventListener('load', setFullHeight);
     </script>
 
     <!-- ✅ Font Awesome for social media icons -->
@@ -49,7 +57,7 @@
             background-position: center center;
             background-size: cover;
             background-repeat: repeat-y;
-            min-height: 100vh;
+            min-height: calc(var(--vh, 1vh) * 100);
         }
 
 
